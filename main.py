@@ -39,7 +39,8 @@ def compare_accuracy(func, a: float, b: float, n: int):
     t_val = trapezoidal_method(func, a, b, n)
     s_val = easy_sci_py(func, a, b)
 
-    print(f"\nФункція: {func}")
+
+    print(f"Функція: {func}")
     print(f"Точне значення (SymPy): {real_value}")
     print(f"Метод Рімана: {r_val}  Похибка: {abs(real_value - r_val)}")
     print(f"Метод трапецій: {t_val}  Похибка: {abs(real_value - t_val)}")
@@ -58,8 +59,8 @@ def compare_time(func, a: float, b: float, n_values):
         trapezoidal_method(func, a, b, n)
         trapezoid_times.append(time.time() - start)
 
-    plt.plot(n_values, riemann_times, label="Метод Рімана", marker='o')
-    plt.plot(n_values, trapezoid_times, label="Метод трапецій", marker='x')
+    plt.plot(n_values, riemann_times, label="Метод Рімана", marker='o') #ріман синій йоу
+    plt.plot(n_values, trapezoid_times, label="Метод трапецій", marker='x') # трапеція оранжева йоу
     plt.xlabel("Кількість підінтервалів (n)")
     plt.ylabel("Час (секунди)")
     plt.title("Порівняння швидкодсті методів")
@@ -90,10 +91,10 @@ if __name__ == "__main__":
     for func, a, b in functions:
         compare_accuracy(func, float(a), float(b), 200)
 
-    print("\n=== ПОРІВНЯННЯ ШВИДКОДІЇ ===")
+    print("\n=== ПОРІВНЯННЯ ШВИДКОСТІ ===")
     compare_time(cos(x), 0, float(pi), [10, 50, 100, 500, 1000, 3000])
 
-    print("\n=== ГРАФІКИ ПОХИБКИ (МЕТОД ТРАПЕЦІЙ) ===")
+    print("\n=== ГРАФІКИ ПОХИБКИ МЕТОД ТРАПЕЦІЙ ===")
     for func, a, b in functions:
         print(f"\nФункція: {func}")
         get_plot_of_error(func, float(a), float(b))
